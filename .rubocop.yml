@@ -1,0 +1,51 @@
+# Common configuration.
+AllCops:
+  # Include common Ruby source files.
+  Exclude:
+    - features/**/*
+    - script/**/*
+    - tmp/**/*
+    - app/controllers/users/*
+    - spec/*_helper.rb
+    - "vendor/**/*"
+    - "node_modules/**/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "Gemfile*"
+    - "bin/**/*"
+    - "Guardfile*"
+      # Heroku injects code which breaks rubocop, this may change in the future and break again
+    - "lib/tasks/heroku_clear_tasks.rake"
+    - "lib/tasks/data_migrations.rake"
+    - "lib/tasks/auto_generate_diagram.rake"
+
+Metrics/AbcSize:
+  Max: 80
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - spec/**/*
+Metrics/ClassLength:
+  Max: 300
+Metrics/CyclomaticComplexity:
+  Max: 40
+Metrics/LineLength:
+  Max: 200
+Metrics/MethodLength:
+  Max: 160
+Metrics/PerceivedComplexity:
+  Max: 15
+Style/ColonMethodCall:
+  Enabled: false
+Style/ConditionalAssignment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/MixinUsage:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/StructInheritance:
+  Enabled: false
