@@ -1,13 +1,19 @@
 .navbar {
-  padding: 10px 12% 66px 12%;
-  background-image: linear-gradient(to right,rgb(56, 71, 92), rgb(30, 204, 131))!important;
+  padding: 10px 12% 10px 12%;
+  background-image: linear-gradient(to right,rgb(56, 71, 92), rgb(65, 170, 126))!important;
 }
 
 .navbar-brand {
   font-size: 34px;
+  font-weight: bold;
 }
 
 .nav-link {
   font-size: 20px;
   color: white!important;
+}
+
+.div {
+  border: 0px solid linear-gradient(to right,rgb(56, 71, 92), rgb(65, 170, 126));
+  background-image: linear-gradient(to right,rgb(56, 71, 92), rgb(65, 170, 126))!important;
 }
