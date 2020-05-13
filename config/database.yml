@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   #uncomment for docker-compose build
-  host: db
+  # host: db
   username: postgres
   password: password
   pool: 5

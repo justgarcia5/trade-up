@@ -1,0 +1,26 @@
+<%= form_for @product do |f| %>
+  <div>
+    <% if @product.errors.any? %>
+      <h4 class='errors-field'>Required fields:</h4>
+    <% end %>
+
+    <div>
+      <%= f.label :title, class: "" %><br />
+      <div class="">
+        <%= f.text_field :title, id: "title", placeholder: "", class: 'form-control' %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :details, class: '' %><br />
+      <div class="">
+        <%= f.text_area :details, id: "details", placeholder: "", class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <%= f.submit "Submit", id: "Submit", class: "btn btn-success mr-2" %>
+      <%= link_to "Back", :back, class: "btn btn-info" %>
+    </div>
+  </div>
+<% end %>
