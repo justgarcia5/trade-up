@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(product_params)
+    @product = Product.create!(product_params)
 
     if @product.save
       flash[:notice] = 'New Product has been successfully created'
@@ -23,6 +23,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :details)
+    params.require(:product).permit(:title, :details, :image)
   end
 end
