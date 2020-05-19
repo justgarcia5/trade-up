@@ -18,6 +18,13 @@
       </div>
     </div>
 
+    <div>
+      <%= f.label :image, class: '' %><br />
+      <div class="">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+
     <div class="text-center mt-3">
       <%= f.submit "Submit", id: "Submit", class: "btn btn-success mr-2" %>
       <%= link_to "Back", :back, class: "btn btn-info" %>
