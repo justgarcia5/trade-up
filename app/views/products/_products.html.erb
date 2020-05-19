@@ -2,6 +2,6 @@
 <% @products.each do |product| %>
   <%= product.title %>
   <%= product.details %><br>
-  <%= image_tag(product.image, style: "width: 300px") %>
+  <%= image_tag(product.image, style: "width: 300px") if product.image.attached? %>
   <br>
 <% end %>
