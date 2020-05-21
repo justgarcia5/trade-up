@@ -1,0 +1,33 @@
+.products-container {
+  padding: 10px 12% 10px 12%;
+}
+
+.product-link {
+  text-decoration: none!important;
+  border-radius: 15px!important;
+}
+
+.card-title {
+  color: black;
+}
+
+.card-text-details {
+  color: black;
+}
+
+.product-link:hover {
+  background-color: rgba(97, 92, 92, 0.342);
+}
+
+.col-2 {
+  padding: 0;
+}
+
+.card {
+  margin: 2px 0;
+  border-radius: 15px!important;
+}
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+}

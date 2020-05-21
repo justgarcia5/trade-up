@@ -2,10 +2,27 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_PASSWORD: "password"
     ports:
       - '5432:5432'
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+
+  # storage:
+  #   s3:
+  #     region: us-east-1
+  #     bucket: trade-up-bucket
+
+  redis:
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis:/data'
+
   web:
     build: .
     volumes:
@@ -14,3 +31,10 @@ services:
       - "8080:8080"
     depends_on:
       - db
+      - 'redis'
+    environment:
+      - DATABASE_HOST=db
+
+volumes:
+  redis:
+  postgres:
