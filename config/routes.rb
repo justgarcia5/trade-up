@@ -3,5 +3,6 @@
 Rails.application.routes.draw do
   resources :products
 
-  root to: 'products#index'
+  get '/*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
+  root to: 'pages#index'
 end

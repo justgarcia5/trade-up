@@ -12,11 +12,14 @@ class ProductsController < ApplicationController
   def create
     @product = Product.create!(product_params)
 
-    if @product.save
-      flash[:notice] = 'New Product has been successfully created'
-      redirect_to root_path
-    else
-      render :new
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to root_path }
+        format.json { render 'pages/index', status: :created, location: @products }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
     end
   end
 
