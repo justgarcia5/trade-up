@@ -1,10 +1,20 @@
 .products-container {
   padding: 10px 12% 10px 12%;
+  // display: wrap;
 }
 
 .product-link {
   text-decoration: none!important;
   border-radius: 15px!important;
+}
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
 }
 
 .card-title {
@@ -15,19 +25,28 @@
   color: black;
 }
 
-.product-link:hover {
-  background-color: rgba(97, 92, 92, 0.342);
-}
-
-.col-2 {
-  padding: 0;
-}
+// .product-link:hover {
+//   background-color: rgba(97, 92, 92, 0.342);
+// }
 
 .card {
   margin: 2px 0;
   border-radius: 15px!important;
 }
 
+.short {
+  height: 400px
+}
+
+.tall {
+  height: 500px;
+}
+
 .card-img-top {
   border-radius: 15px 15px 0 0;
+  height: 200px;
+}
+
+.card-body {
+  height: 260px;
 }

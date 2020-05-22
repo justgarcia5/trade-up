@@ -1,0 +1,8 @@
+<div class="text-center mt-5">
+  <%= image_tag(@product.image, class: "product-image text-center") %>
+  <h1 class="mt-5"><%= @product.title %></h1>
+  <p class="details mt-5"><%= @product.details %></p>
+  <%= link_to "Back", :back, class: "btn btn-info" %>
+  <%= link_to "Update", edit_product_path(@product), class: "btn btn-secondary" %>
+  <%= link_to "Delete", product_path(@product), method: :delete, data: { confirm: "Are you sure you would like to delete Location: #{@product.title}" }, :class => "btn btn-danger"  %>
+</div>
