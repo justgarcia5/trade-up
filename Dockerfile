@@ -11,8 +11,6 @@ RUN bundle install
 
 COPY . .
 
-RUN yarn install --check-files
-RUN RAILS_ENV=staging rake webpacker:compile
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
