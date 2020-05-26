@@ -4,25 +4,27 @@
       <h4 class='errors-field'>Required fields:</h4>
     <% end %>
 
-    <div>
-      <%= f.label :title, class: "" %><br />
+    <div class="form-group">
+      <%= f.label :title %><br />
       <div class="">
         <%= f.text_field :title, id: "title", placeholder: "", class: 'form-control' %>
       </div>
     </div>
 
     <div>
-      <%= f.label :details, class: '' %><br />
+      <%= f.label :details %><br />
       <div class="">
         <%= f.text_area :details, id: "details", placeholder: "", class: 'form-control' %>
       </div>
     </div>
 
     <div>
-      <%= f.label :image, class: '' %><br />
-      <div class="">
-        <%= f.file_field :image %>
-      </div>
+      <%= f.label :images %><br />
+      <% if @product.images.length < 5 %>
+        <div class="form-file"> 
+          <%= f.file_field :images, multiple: true, direct_upload: true %>
+        </div>
+      <% end %>
     </div>
 
     <div class="text-center mt-3">

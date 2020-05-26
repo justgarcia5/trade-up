@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to root_path
+      redirect_to product_path
       flash[:notice] = 'Product has been successfully updated'
     else
       render :edit
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
   def destroy
     return unless @product.destroy
 
-    redirect_to products_path
+    redirect_to root_path
     flash[:notice] = 'Product was successfully deleted'
   end
 
@@ -51,6 +51,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :details, :image)
+    params.require(:product).permit(:title, :details, images: [])
   end
 end
