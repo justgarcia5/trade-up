@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import EllipsisText from "react-ellipsis-text";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -13,21 +14,21 @@ export default function Products() {
 
   return(
     <div className="products-container">
-      <div className="row card-deck mt-5">
+      <div className="card-columns mt-5">
         {products.map((product, index) => {
           return(
-            <div key={index} className="col-2 my-3">
-              <div className="card">
-                <a href="/" className="product-link">
-                  <img src={product.image_url} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">{product.title}</h5>
-                    <p className="card-text-details">{product.details}</p>
-                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </a>
-              </div>
-            </div>
+            <div  key={index}  className="card">
+              <a href={`/products/${product.id}`} className="product-link">
+                <img src={product.image_url} className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h5 className="card-title">{product.title}</h5>
+                  <EllipsisText text={product.details} length={28} className="product-details"/> Read more <br/>
+                </div>
+                <div className="card-footer">
+                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> Los Angeles</small>
+                </div>
+              </a>
+            </div>              
           )
         })}
       </div>

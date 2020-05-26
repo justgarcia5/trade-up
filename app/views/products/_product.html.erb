@@ -1,0 +1,14 @@
+<div class="text-center my-5">
+    <% @product.images.each do |i| %>
+        <%= image_tag(i, class: "product-image text-center") %>
+    <% end %>
+
+    
+    <div class="my-5">
+        <h1 class="m-4"><%= @product.title %></h1><br>
+        <%= @product.details %><br>
+    </div>
+    <%= link_to 'Back', root_path, class: 'btn btn-info' %>
+    <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-secondary' %> 
+    <%= link_to 'Delete', product_path(@product), method: :delete, data: { confirm: "Are you sure you would like to delete Location: #{@product.title}" }, :class => "btn btn-danger" %>
+</div>

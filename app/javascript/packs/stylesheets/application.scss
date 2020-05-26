@@ -1,6 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import "@fortawesome/fontawesome-free";
 @import "./navbar.scss";
 @import "./products.scss";
+@import "./product.scss";
 
 * {
   font-family: Lato,sans-serif;
