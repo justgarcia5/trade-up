@@ -8,7 +8,7 @@ export default function userProducts(props) {
   useEffect(() => {
     fetch(`/products.json`)
       .then(response => response.json())
-      .then(products => {    
+      .then(products => {
         let filteredProducts = products.filter(product => product.user_id == currentUser.id)
         setProducts(filteredProducts);
       });
@@ -28,10 +28,10 @@ export default function userProducts(props) {
                   <EllipsisText text={product.details} length={28} className="product-details"/> Read more <br/>
                 </div>
                 <div className="card-footer">
-                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> Los Angeles</small>
+                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> {product.location}</small>
                 </div>
               </a>
-            </div>              
+            </div>
           )
         })}
       </div>

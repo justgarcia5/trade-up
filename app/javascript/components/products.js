@@ -25,10 +25,10 @@ export default function Products() {
                   <EllipsisText text={product.details} length={28} className="product-details"/> Read more <br/>
                 </div>
                 <div className="card-footer">
-                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> Los Angeles</small>
+                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> {product.location}</small>
                 </div>
               </a>
-            </div>              
+            </div>
           )
         })}
       </div>

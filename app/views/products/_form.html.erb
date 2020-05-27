@@ -11,6 +11,13 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <%= f.label :location %><br />
+      <div class="">
+        <%= f.text_field :location, id: "location", placeholder: "", class: 'form-control' %>
+      </div>
+    </div>
+
     <div>
       <%= f.label :details %><br />
       <div class="">
@@ -21,7 +28,7 @@
     <div>
       <%= f.label :images %><br />
       <% if @product.images.length < 5 %>
-        <div class="form-file"> 
+        <div class="form-file">
           <%= f.file_field :images, multiple: true, direct_upload: true %>
         </div>
       <% end %>
