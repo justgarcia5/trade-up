@@ -1,0 +1,46 @@
+<h2 class="text-center mt-5 mb-3">Edit Profile</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions text-center">
+    <%= f.submit "Update", class: "btn btn-success my-4" %>
+  </div>
+<% end %>
+
+
+<div class="d-flex justify-content-center">
+  <%= link_to "Back", :back, class: "btn btn-info mr-2" %>
+  <%= link_to "Delete", registration_path(resource_name), class: "btn btn-danger ml-2", data: { confirm: "Are you sure?" }, method: :delete %>
+</div>
+
+
+

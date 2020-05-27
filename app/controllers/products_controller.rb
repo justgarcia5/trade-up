@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   before_action :find_product, only: %i[edit update destroy show]
 
   def index
@@ -12,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create!(product_params)
+    @product = current_user.products.build(product_params)
 
     if @product.save
       redirect_to root_path
@@ -22,9 +23,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit;end
+  def edit; end
 
-  def show;end
+  def show; end
 
   def update
     if @product.update(product_params)
@@ -47,8 +48,6 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.find(params[:id])
   end
-
-  private
 
   def product_params
     params.require(:product).permit(:title, :details, images: [])
