@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :find_product, only: %i[edit update destroy show]
@@ -19,13 +17,18 @@ class ProductsController < ApplicationController
       redirect_to root_path
       flash[:notice] = 'Product has been successfully created'
     else
-      render :new
+      redirect_to new_product_path
+      flash[:errors] = @product.errors.full_messages
     end
   end
 
   def edit; end
 
-  def show; end
+  def show
+    @user_product = User.find(@product.user_id)
+    @user_avatar = @user_product.avatar
+    @geo_url = "http://maps.googleapis.com/maps/api/staticmap?size=420x330&sensor=false&zoom=14&markers=#{@product.latitude}%2C#{@product.longitude}&key=AIzaSyA9baOX0VI4bMeZC2YUGFNs0ffcVg30hKc"
+  end
 
   def update
     if @product.update(product_params)
@@ -50,6 +53,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:title, :details, :location, images: [])
+    params.require(:product).permit(:title, :description, :city, :state, :zipcode, images: [])
   end
 end

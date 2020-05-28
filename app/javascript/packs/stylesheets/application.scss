@@ -4,7 +4,24 @@
 @import "./products.scss";
 @import "./product.scss";
 @import "./login.scss";
+@import "./product_form.scss";
 
 * {
   font-family: Lato,sans-serif;
+}
+
+.user-avatar-edit {
+  height: 260px;
+}
+
+.user-avatar {
+  height: 80px;
+}
+
+.image-upload > input
+{
+   display: none;
+}
+.image-upload > label{
+  cursor:pointer;
 }

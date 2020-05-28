@@ -25,10 +25,10 @@ export default function userProducts(props) {
                 <img src={product.image_url} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h5 className="card-title">{product.title}</h5>
-                  <EllipsisText text={product.details} length={28} className="product-details"/> Read more <br/>
+                  <EllipsisText text={product.description} length={28} className="product-details"/> Read more <br/>
                 </div>
                 <div className="card-footer">
-                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> {product.location}</small>
+                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> {product.city}, {product.state}</small>
                 </div>
               </a>
             </div>

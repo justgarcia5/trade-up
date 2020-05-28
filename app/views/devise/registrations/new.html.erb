@@ -3,13 +3,13 @@
   <h2>Sign up</h2>
   <div class="facebook-div">
     <i class="fab fa-facebook facebook-icon"></i>
-    <%= link_to "Contunue with facebook" , user_facebook_omniauth_authorize_path, id: "facebook" %> 
+    <%= link_to "Contunue with facebook" , user_facebook_omniauth_authorize_path, id: "facebook" %>
   </div>
 
   <p>- OR -</p>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%#  <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group">
       <%= f.email_field :email, class: "field form-control", autofocus: true, autocomplete: "email", placeholder: "Enter email..." %>
