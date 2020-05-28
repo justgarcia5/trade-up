@@ -1,42 +1,58 @@
-<%= form_for @product do |f| %>
-  <div>
-    <% if @product.errors.any? %>
-      <h4 class='errors-field'>Required fields:</h4>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :title %><br />
-      <div class="">
-        <%= f.text_field :title, id: "title", placeholder: "", class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :location %><br />
-      <div class="">
-        <%= f.text_field :location, id: "location", placeholder: "", class: 'form-control' %>
-      </div>
-    </div>
-
+<div class="product-form-div">
+  <%= form_for @product do |f| %>
     <div>
-      <%= f.label :details %><br />
-      <div class="">
-        <%= f.text_area :details, id: "details", placeholder: "", class: 'form-control' %>
-      </div>
-    </div>
-
-    <div>
-      <%= f.label :images %><br />
-      <% if @product.images.length < 5 %>
-        <div class="form-file">
-          <%= f.file_field :images, multiple: true, direct_upload: true %>
-        </div>
+      <% if @product.errors.any? %>
+        <h4 class='errors-field'>Required fields:</h4>
       <% end %>
-    </div>
 
-    <div class="text-center mt-3">
-      <%= f.submit "Submit", id: "Submit", class: "btn btn-success mr-2" %>
-      <%= link_to "Back", :back, class: "btn btn-info" %>
+      <div class="form-group">
+        <%= f.label :title %><br />
+        <div class="">
+          <%= f.text_field :title, id: "title", placeholder: "", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city %><br />
+        <div class="">
+          <%= f.text_field :city, id: "city", placeholder: "", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :state %><br />
+        <div class="">
+          <%= f.select(:state, us_states, class: 'select-control', placeholder: "--not selected--") %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :zipcode %><br />
+        <div class="">
+          <%= f.number_field :zipcode, id: "zipcode", placeholder: "", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %><br />
+        <div class="">
+          <%= f.text_area :description, id: "description", placeholder: "", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :images %><br />
+        <% if @product.images.length < 5 %>
+          <div class="form-file">
+            <%= f.file_field :images, multiple: true, direct_upload: true %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="text-center mt-5">
+        <%= f.submit "Submit", id: "Submit", class: "btn btn-success mr-2" %>
+        <%= link_to "Back", :back, class: "btn btn-info" %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

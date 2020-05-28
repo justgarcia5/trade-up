@@ -3,16 +3,30 @@
         <%= image_tag(i, class: "product-image text-center") %>
     <% end %>
 
-    
-    <div class="my-5">
-        <h1 class="m-4"><%= @product.title %></h1><br>
-        <%= @product.details %><br>
+            <h2 class="mt-4"><%= @product.title %></h2><br>
+
+
+
+    <div class="row">
+        <div class="col-6 mt-3">
+            <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=420x330&sensor=false&zoom=15&markers=#{@product.latitude}%2C#{@product.longitude}&key=AIzaSyA9baOX0VI4bMeZC2YUGFNs0ffcVg30hKc", class: "map-img" %>
+        </div>
+        <div class="col-6 mt-3 text-left">
+            <%= @product.description %><br>
+            <div class="mt-5">
+                <%= @product.city%>,
+                <%= @product.state%><br>
+            </div>
+        </div>
+        <div class="m-auto pt-5">
+            <%= link_to 'Back', root_path, class: 'btn btn-info' %>
+            <% if current_user %>
+                <% if current_user.id == @product.user_id %>
+                    <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-secondary' %>
+                    <%= link_to 'Delete', product_path(@product), method: :delete, data: { confirm: "Are you sure you would like to delete Location: #{@product.title}" }, :class => "btn btn-danger" %>
+                <% end %>
+            <% end %>
+        </div>
     </div>
-    <%= link_to 'Back', root_path, class: 'btn btn-info' %>
-    <% if current_user %>
-        <% if current_user.id == @product.user_id %>
-            <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-secondary' %> 
-            <%= link_to 'Delete', product_path(@product), method: :delete, data: { confirm: "Are you sure you would like to delete Location: #{@product.title}" }, :class => "btn btn-danger" %>
-        <% end %>
-    <% end %>
+
 </div>

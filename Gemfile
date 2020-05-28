@@ -65,3 +65,4 @@ gem 'image_processing'
 gem "aws-sdk-s3", require: false
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
