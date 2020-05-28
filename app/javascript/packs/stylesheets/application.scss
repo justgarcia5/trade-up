@@ -10,6 +10,18 @@
   font-family: Lato,sans-serif;
 }
 
+.user-avatar-edit {
+  height: 260px;
+}
+
 .user-avatar {
-  height: 60px;
+  height: 80px;
+}
+
+.image-upload > input
+{
+   display: none;
+}
+.image-upload > label{
+  cursor:pointer;
 }

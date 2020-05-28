@@ -1,9 +1,6 @@
 <div class="product-form-div">
   <%= form_for @product do |f| %>
     <div>
-      <% if @product.errors.any? %>
-        <h4 class='errors-field'>Required fields:</h4>
-      <% end %>
 
       <div class="form-group">
         <%= f.label :title %><br />
@@ -42,11 +39,9 @@
 
       <div class="form-group">
         <%= f.label :images %><br />
-        <% if @product.images.length < 5 %>
-          <div class="form-file">
-            <%= f.file_field :images, multiple: true, direct_upload: true %>
-          </div>
-        <% end %>
+        <div class="form-file">
+          <%= f.file_field :images, multiple: true, direct_upload: true %>
+        </div>
       </div>
 
       <div class="text-center my-5">

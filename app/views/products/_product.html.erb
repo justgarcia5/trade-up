@@ -1,6 +1,8 @@
 <div class="text-center my-5">
-    <% @product.images.each do |i| %>
-        <%= image_tag(i, class: "product-image text-center") %>
+    <% if @product.images.attached? %>
+        <% @product.images.each do |i| %>
+            <%= image_tag(i, class: "product-image text-center") %>
+        <% end %>
     <% end %>
     <div class="row mt-5">
         <div class="col-sm-6 mt-3">
@@ -11,10 +13,10 @@
             <%= @product.description %><br>
             <hr>
             <div class="mt-4">
-                <% if @user_product.images.attached? %>
-                    <%= image_tag @user_image, class: "user-avatar" %>
+                <% if @user_product.avatar.attached? %>
+                    <%= image_tag @user_avatar, class: "user-avatar" %>
                 <% elsif @user_product.image.present? %>
-                    <%= image_tag @user_product.image %>
+                    <%= image_tag @user_product.image, class: "user-avatar" %>
                 <% end %>
                 <div class="mt-2">
                     <b><i class="fas fa-user"></i></b>

@@ -17,7 +17,8 @@ class ProductsController < ApplicationController
       redirect_to root_path
       flash[:notice] = 'Product has been successfully created'
     else
-      render :new
+      redirect_to new_product_path
+      flash[:errors] = @product.errors.full_messages
     end
   end
 
@@ -25,8 +26,8 @@ class ProductsController < ApplicationController
 
   def show
     @user_product = User.find(@product.user_id)
-    @user_image = @user_product.images
-    @geo_url = "http://maps.googleapis.com/maps/api/staticmap?size=420x330&sensor=false&zoom=15&markers=#{@product.latitude}%2C#{@product.longitude}&key=AIzaSyA9baOX0VI4bMeZC2YUGFNs0ffcVg30hKc"
+    @user_avatar = @user_product.avatar
+    @geo_url = "http://maps.googleapis.com/maps/api/staticmap?size=420x330&sensor=false&zoom=14&markers=#{@product.latitude}%2C#{@product.longitude}&key=AIzaSyA9baOX0VI4bMeZC2YUGFNs0ffcVg30hKc"
   end
 
   def update
