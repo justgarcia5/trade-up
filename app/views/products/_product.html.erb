@@ -2,20 +2,27 @@
     <% @product.images.each do |i| %>
         <%= image_tag(i, class: "product-image text-center") %>
     <% end %>
-
-            <h2 class="mt-4"><%= @product.title %></h2><br>
-
-
-
-    <div class="row">
-        <div class="col-6 mt-3">
-            <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=420x330&sensor=false&zoom=15&markers=#{@product.latitude}%2C#{@product.longitude}&key=AIzaSyA9baOX0VI4bMeZC2YUGFNs0ffcVg30hKc", class: "map-img" %>
+    <div class="row mt-5">
+        <div class="col-sm-6 mt-3">
+            <%= image_tag @geo_url, class: "map-img" %>
         </div>
-        <div class="col-6 mt-3 text-left">
+        <div class="col-sm-6 text-left">
+            <h2 class="text-center"><%= @product.title %></h2><br>
             <%= @product.description %><br>
-            <div class="mt-5">
-                <%= @product.city%>,
-                <%= @product.state%><br>
+            <hr>
+            <div class="mt-4">
+                <% if @user_product.images.attached? %>
+                    <%= image_tag @user_image, class: "user-avatar" %>
+                <% elsif @user_product.image.present? %>
+                    <%= image_tag @user_product.image %>
+                <% end %>
+                <div class="mt-2">
+                    <b><i class="fas fa-user"></i></b>
+                    <%= @user_product.name %><br>
+                    <b><i class="fas fa-map-marker-alt"></i></b>
+                    <%= @product.city%>,
+                    <%= @product.state%>
+                </div>
             </div>
         </div>
         <div class="m-auto pt-5">
@@ -28,5 +35,4 @@
             <% end %>
         </div>
     </div>
-
 </div>

@@ -28,7 +28,7 @@ export default function userProducts(props) {
                   <EllipsisText text={product.description} length={28} className="product-details"/> Read more <br/>
                 </div>
                 <div className="card-footer">
-                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> {product.city}</small>
+                  <small className="text-muted"><i className="fas fa-map-marker-alt"></i> {product.city}, {product.state}</small>
                 </div>
               </a>
             </div>
