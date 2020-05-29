@@ -9,11 +9,17 @@
 }
 
 .nav-link {
-  font-size: 20px;
+  font-size: 22px;
   color: white!important;
 }
 
 .div {
   border: 0px solid linear-gradient(to right,rgb(56, 71, 92), rgb(65, 170, 126));
   background-image: linear-gradient(to right,rgb(56, 71, 92), rgb(65, 170, 126))!important;
+}
+
+.nav-image {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
 }
