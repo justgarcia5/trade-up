@@ -27,7 +27,7 @@
           <a class="nav-link" role="button" type="button" class="btn" data-toggle="dropdown">
             <i class="far fa-comment-dots"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "No new messages", my_products_path, class: "dropdown-item color-black" %>
+              <%= link_to "Inbox", conversations_path, class: "dropdown-item color-black" %>
             </div>
           </a>
         </li>
@@ -36,7 +36,7 @@
             <% if current_user.image.present? %>
               <%= image_tag current_user.image, class: "nav-image mr-2 p-0" %><%= current_user.name %>
             <% elsif current_user.avatar.attached? %>
-              <%= image_tag current_user.avatarP, class: "nav-image mr-2 p-0" %><%= current_user.name %>
+              <%= image_tag current_user.avatar, class: "nav-image mr-2 p-0" %><%= current_user.name %>
             <% end %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
