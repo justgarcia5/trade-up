@@ -5,23 +5,24 @@
 @import "./product.scss";
 @import "./login.scss";
 @import "./product_form.scss";
+@import "./messages.scss";
 
 * {
   font-family: Lato,sans-serif;
 }
 
 .user-avatar-edit {
-  height: 260px;
+  height: 100px;
 }
 
 .user-avatar {
   height: 80px;
 }
 
-.image-upload > input
-{
+.image-upload > input {
    display: none;
 }
-.image-upload > label{
+
+.image-upload > label {
   cursor:pointer;
 }

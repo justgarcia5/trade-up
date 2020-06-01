@@ -66,3 +66,4 @@ gem "aws-sdk-s3", require: false
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'

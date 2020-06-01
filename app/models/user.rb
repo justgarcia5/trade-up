@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :products
+  has_many :products, dependent: :destroy
   has_one_attached :avatar
 
   def self.new_with_session(params, session)
