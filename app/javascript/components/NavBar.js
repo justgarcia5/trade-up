@@ -12,6 +12,14 @@ const NavBar = props => {
       });
   }, []);
 
+  const handleClick = () => {
+    fetch('/notifications/mark_as_read/', {
+      method: "POST",
+      datatype: "JSON"
+    }).then(res => res.json()).then(() => setNotifications([]))
+    console.log('clicked')
+  }
+
   console.log(notifications)
 
   return(
@@ -22,10 +30,10 @@ const NavBar = props => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* <form className="form-inline m-auto">
-          <input className="form-control mr-sm-2 text-center" type="search" placeholder="Search" aria-label="Search">
+        <form className="form-inline m-auto ">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>  */}
+        </form>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
@@ -47,12 +55,25 @@ const NavBar = props => {
             {currentUser &&
               <React.Fragment>
                 <li className="nav-item dropdown mx-2"  >
-                  <a className="nav-link" role="button" type="button" className="btn" data-toggle="dropdown" data-behavior="notifications">
-                    <i className="far fa-comment-dots m-1 message_icon"></i>
+                  <a className="nav-link" role="button" type="button" className="btn" data-toggle="dropdown" data-behavior={notifications}>
+                    <span className="text-white"><i className="far fa-comment-dots m-1 message_icon"></i>{notifications.length}</span>
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {notifications.length < 1 && <a className="dropdown-item color-black">No messages</a>}
-                    {notifications.map((notification, index) => <a key={index} href={notification.url} className="dropdown-item color-black">Inbox</a>)
+                    {notifications.length < 1 &&
+                      <div>
+                        <a className="dropdown-item color-black">No new messages</a>
+                        <div className="dropdown-divider"></div>
+                        <a href="/conversations" className="dropdown-item color-black">Inbox</a>
+                      </div>
+                    }
+                    {notifications.length > 0 &&
+                      notifications.map((notification, index) => {
+                        return(
+                          <div>
+                            <a key={index} onClick={handleClick} href={notification.url} className="dropdown-item color-black">Message from {notification.sender.name}</a>
+                          </div>
+                        )
+                      })
                     }
                   </div>
                 </li>
