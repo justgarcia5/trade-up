@@ -10,3 +10,4 @@ class Conversation < ApplicationRecord
     where("(conversations.sender_id = ? AND conversations.recipient_id = ?) OR (conversations.sender_id = ? AND conversations.recipient_id = ?)", sender_id, recipient_id, recipient_id, sender_id)
   end
 end
+

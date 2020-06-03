@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :products, dependent: :destroy
   has_one_attached :avatar
+  has_many :notifications, foreign_key: :recipient_id
 
   def self.new_with_session(params, session)
     super.tap do |user|

@@ -19,6 +19,9 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
+    user = User.find(@conversation.recipient_id)
+    Notification.create(recipient: user, sender: current_user, action: "Message", notifiable: @message)
+
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     end
