@@ -3,7 +3,9 @@ class ConversationsController < ApplicationController
 
   def index
     @users = User.all
-    @conversations = Conversation.all
+    @message = Message.last
+    @conversations = Conversation.all.order(id: :asc)
+    @messages = Message.all
   end
 
   def create

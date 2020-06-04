@@ -7,5 +7,5 @@ json.array! @notifications do |notification|
      notification.notifiable
      json.type "a #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
   end
-  # json.url conversation_path(@conversation)
+  json.url conversations_path(@conversation)
 end

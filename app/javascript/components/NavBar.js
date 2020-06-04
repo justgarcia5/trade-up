@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react'
 const NavBar = props => {
   const [currentUser, setCurrentUser] = useState(props.current_user)
   const [notifications, setNotifications] = useState([])
+  const [displayAlertClass, setDisplayAlertClass] = useState('')
 
   useEffect(() => {
     fetch(`/notifications.json`)
       .then(response => response.json())
       .then(notifications => {
         setNotifications(notifications);
+        let alertClass = notifications.length > 0 ? "message_alert" : " "
+        setDisplayAlertClass(alertClass);
       });
   }, []);
 
@@ -16,24 +19,24 @@ const NavBar = props => {
     fetch('/notifications/mark_as_read/', {
       method: "POST",
       datatype: "JSON"
-    }).then(res => res.json()).then(notifications => setNotifications(notifications))
-    console.log('clicked')
+    }).then(res => res.json()).then((notifications) => {
+      setNotifications(notifications)
+    })
   }
-  console.log(notifications)
-  const notificationDisplay = notifications.length > 0 ? notifications.length : " "
+  const notificationDisplay = notifications.length > 0 ? notifications.length : " ";
 
   return(
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="/">AllTraderUp</a>
+        <a className="navbar-brand" href="/"><b>AllTraderUp</b></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <form className="form-inline m-auto ">
+        {/* <form className="form-inline m-auto ">
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> */}
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
@@ -54,9 +57,11 @@ const NavBar = props => {
 
             {currentUser &&
               <React.Fragment>
-                <li className="nav-item dropdown mx-2"  >
-                  <a className="nav-link" role="button" type="button" className="btn" data-toggle="dropdown" data-behavior={notifications}>
-                    <span className="text-white"><i className="far fa-comment-dots m-1 message_icon"></i>{notificationDisplay}</span>
+                <li className="nav-item dropdown"  >
+                  <a className="nav-link" role="button" type="button" className="btn" data-toggle="dropdown">
+                    <div className="text-white message_icon">
+                      <i className="far fa-comment-dots m-1"></i><i className={displayAlertClass}>{notificationDisplay}</i>
+                    </div>
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     {notifications.length < 1 &&
@@ -69,7 +74,7 @@ const NavBar = props => {
                     {notifications.length > 0 &&
                       notifications.map((notification, index) => {
                         return(
-                          <div key={index} onClick={() => handleClick()}>
+                          <div key={index} onClick={handleClick}>
                             <a href={notification.url} className="dropdown-item color-black">Message from {notification.sender.name}</a>
                           </div>
                         )
@@ -90,6 +95,7 @@ const NavBar = props => {
                 </li>
               </React.Fragment>
             }
+
           </ul>
         </div>
       </nav>

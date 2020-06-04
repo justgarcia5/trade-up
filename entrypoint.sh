@@ -1,5 +1,5 @@
 #! /bin/bash
-bundle exec rake db:setup
+# bundle exec rake db:setup
 bundle exec rake db:migrate
 
 # Remove a potentially pre-existing server.pid for Rails.
