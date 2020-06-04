@@ -16,11 +16,11 @@ const NavBar = props => {
     fetch('/notifications/mark_as_read/', {
       method: "POST",
       datatype: "JSON"
-    }).then(res => res.json()).then(() => setNotifications([]))
+    }).then(res => res.json()).then(notifications => setNotifications(notifications))
     console.log('clicked')
   }
-
   console.log(notifications)
+  const notificationDisplay = notifications.length > 0 ? notifications.length : " "
 
   return(
     <div>
@@ -56,7 +56,7 @@ const NavBar = props => {
               <React.Fragment>
                 <li className="nav-item dropdown mx-2"  >
                   <a className="nav-link" role="button" type="button" className="btn" data-toggle="dropdown" data-behavior={notifications}>
-                    <span className="text-white"><i className="far fa-comment-dots m-1 message_icon"></i>{notifications.length}</span>
+                    <span className="text-white"><i className="far fa-comment-dots m-1 message_icon"></i>{notificationDisplay}</span>
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     {notifications.length < 1 &&
@@ -69,8 +69,8 @@ const NavBar = props => {
                     {notifications.length > 0 &&
                       notifications.map((notification, index) => {
                         return(
-                          <div>
-                            <a key={index} onClick={handleClick} href={notification.url} className="dropdown-item color-black">Message from {notification.sender.name}</a>
+                          <div key={index} onClick={() => handleClick()}>
+                            <a href={notification.url} className="dropdown-item color-black">Message from {notification.sender.name}</a>
                           </div>
                         )
                       })

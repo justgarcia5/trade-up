@@ -20,13 +20,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
-    @users = User.all
 
     if @message.save
-      (@users.uniq - [current_user]).each do |user|
-        Notification.create(recipient: user, sender: current_user, action: "Message", notifiable: @message)
+      @conversation = Conversation.find(@message.conversation_id)
+      @origin_recipient = User.find(@conversation.recipient_id)
+      @origin_sender = User.find(@conversation.sender_id)
+      if @message.user_id == @origin_sender.id
+        Notification.create(recipient: @origin_recipient, sender: current_user, action: "Message", notifiable: @message)
+      elsif @message.user_id == @origin_recipient.id
+        Notification.create(recipient: @origin_sender, sender: current_user, action: "Message", notifiable: @message)
       end
-
       redirect_to conversation_messages_path(@conversation)
     end
   end
