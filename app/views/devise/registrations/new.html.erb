@@ -1,10 +1,11 @@
 <div class="login-container my-5">
 
   <h2>Sign up</h2>
-  <div class="facebook-div">
-    <i class="fab fa-facebook facebook-icon"></i>
-    <%= link_to "Contunue with facebook" , user_facebook_omniauth_authorize_path, id: "facebook" %>
-  </div>
+    <%= link_to user_facebook_omniauth_authorize_path, id: "facebook"  do %>
+      <div class="facebook-div">
+        <i class="fab fa-facebook facebook-icon"></i> Contunue with facebook
+      </div>
+    <% end %>
 
   <p>- OR -</p>
 

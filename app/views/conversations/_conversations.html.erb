@@ -7,13 +7,21 @@
     <% end %>
     <% unless current_user.id == recipient %>
       <div class="chat_list">
-        <%= link_to conversation_messages_path(conversation), class: "active" do %>
+        <%= link_to conversation_messages_path(conversation) do %>
           <div class="chat_people">
-            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_img">
+              <% if recipient.avatar.attached? %>
+                <div class="incoming_msg_img"> <%= image_tag recipient.avatar, class: "user-image" %> </div>
+              <% elsif recipient.image.present? %>
+                <div class="incoming_msg_img"> <%= image_tag recipient.image, class: "user-image" %> </div>
+              <% else %>
+                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <% end %>
+            </div>
             <div class="chat_ib">
-              <h5><%= recipient.name %><span class="chat_date">Dec 25</span></h5>
-              <p>Test, which is a new approach to have all solutions
-                astrology under one roof.</p>
+              <h5><%= recipient.name %><span class="chat_date"></span></h5>
+              <% message = Message.where(user_id: recipient.id).last %>
+              <p><%= message.body %></p>
             </div>
           </div>
         <% end %>

@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
   def show
     @user_product = User.find(@product.user_id)
     @user_avatar = @user_product.avatar
-    @geo_url = "http://maps.googleapis.com/maps/api/staticmap?size=420x330&sensor=false&zoom=14&markers=#{@product.latitude}%2C#{@product.longitude}&key=AIzaSyA9baOX0VI4bMeZC2YUGFNs0ffcVg30hKc"
   end
 
   def update

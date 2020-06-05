@@ -4,7 +4,7 @@
 
     <% if current_user.id == user.id %>
       <div class="outgoing_msg my-3"">
-        <div class="sent_msg">
+        <div class="sent_msg mr-3">
           <p><%= message.body %></p>
           <span class="time_date"><%= message.message_time %></span> </div>
       </div>
@@ -17,7 +17,7 @@
         <% else %>
           <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
         <% end %>
-        <div class="received_msg">
+        <div class="received_msg ">
           <div class="received_withd_msg">
             <p><%= message.body %></p>
             <span class="time_date"><%= message.message_time %></span></div>
