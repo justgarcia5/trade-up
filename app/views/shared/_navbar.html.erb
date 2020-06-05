@@ -1,53 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">TradeUp</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<% if user_signed_in? %>
+  <% if current_user.avatar.attached? %>
+    <% @image =  url_for(current_user.avatar) %>
+  <% elsif current_user.image.present? %>
+    <% @image = current_user.image %>
+  <% end %>
 
-  <%# <form class="form-inline m-auto">
-    <input class="form-control mr-sm-2 text-center" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form> %>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" id="trade" href="/products/new"><i class="fas fa-tags"></i> Trade <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-      <% unless user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
-      <% else %>
-        <li class="nav-item dropdown mx-2">
-          <a class="nav-link" role="button" type="button" class="btn" data-toggle="dropdown">
-            <i class="far fa-comment-dots"></i>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Inbox", conversations_path, class: "dropdown-item color-black" %>
-            </div>
-          </a>
-        </li>
-        <li class="nav-item dropdown ml-1 mr-3">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if current_user.image.present? %>
-              <%= image_tag current_user.image, class: "nav-image mr-2 p-0" %><%= current_user.name %>
-            <% elsif current_user.avatar.attached? %>
-              <%= image_tag current_user.avatar, class: "nav-image mr-2 p-0" %><%= current_user.name %>
-            <% end %>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Products", my_products_path, class: "dropdown-item color-black" %>
-            <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item color-black" %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item color-black", method: :delete %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-
-  </div>
-</nav>
+  <%= react_component "NavBar", current_user: {
+    id: current_user.id,
+    email: current_user.email,
+    name: current_user.name,
+    image: @image,
+    avatar: @image
+  } %>
+<% else %>
+  <%= react_component 'NavBar', props: {'logged_in': false}%>
+<% end %>

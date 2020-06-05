@@ -1,4 +1,5 @@
 .navbar {
+  font-family: 'Sarabun', sans-serif;
   padding: 10px 12% 10px 12%;
   background-image: linear-gradient(to right,rgb(56, 71, 92), rgb(65, 170, 126))!important;
 }
@@ -22,4 +23,22 @@
   border-radius: 50%;
   height: 30px;
   width: 30px;
+}
+
+.message_icon {
+  font-size: 28px;
+  color: white;
+}
+
+.message_alert {
+  position: absolute;
+  left: 35px;
+  top: 6px;
+  z-index: 3;
+  border: 1px solid rgb(250, 8, 8);
+  background-color: rgb(250, 8, 8);
+  border-radius: 50%;
+  padding: 0 3px 0 3px;
+  font-size: 9px;
+  font-style: normal;
 }

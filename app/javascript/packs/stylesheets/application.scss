@@ -7,9 +7,7 @@
 @import "./product_form.scss";
 @import "./messages.scss";
 
-* {
-  font-family: Lato,sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@500&display=swap');
 
 .user-avatar-edit {
   height: 100px;

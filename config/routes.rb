@@ -7,9 +7,18 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   resources :products
+
   resources :conversations do
     resources :messages
   end
+
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
+
   get '/auth/facebook/callback' => 'sessions#create'
   get '/my-products', to: 'pages#my-products'
   get '/*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
