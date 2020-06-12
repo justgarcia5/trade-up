@@ -3,8 +3,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], callback_url: "http://localhost:3000/users/auth/facebook/callback"
-  # config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], callback_url: "https://alltraderup.com/users/auth/facebook/callback"
+  # config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], callback_url: "https://alltraderup.com/users/auth/facebook/callback"
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container my-5" id="container">
   <div class="messaging">
     <div class="inbox_msg mt-5">
       <div class="inbox_people">
@@ -24,9 +24,15 @@
         </div>
       </div>
     <div class="mesgs">
-      <div class="msg_history">
+      <div class="msg_history" id="msg_history">
         <%= render "messages", messages: @messages %>
       </div>
+
+      <script>
+        var objDiv = document.getElementById("msg_history");
+        objDiv.scrollTop = objDiv.scrollHeight;
+      </script>
+
       <div class="type_msg">
         <div class="input_msg_write">
           <%= render "form", locals: {conversation: @conversation, message: @message}%>

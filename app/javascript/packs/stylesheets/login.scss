@@ -1,8 +1,10 @@
 
- .login-btn {
-    border-radius: 500px!important;
+ .btn {
+    border-radius: 50px!important;
+    padding: 6px 33px 6px 33px;
+    font-size: 18px;
   }
- 
+
  .facebook-div {
    border: 1px solid #3b5998;
    padding: 12px 30px;
@@ -15,37 +17,36 @@
    white-space: normal;
    margin: 28px auto;
  }
- 
+
  .facebook-icon {
    font-size: 22px;
  }
- 
+
  #facebook {
    text-decoration: none;
    color: white;
  }
- 
+
  .facebook-div a {
    padding-left: 4px;
  }
- 
+
  .facebook-icon {
    font-size: 24px!important;
  }
- 
+
  .login-container {
    text-align: center;
    margin: auto;
    width: 420px;
  }
- 
+
  .field {
    max-width: 420px;
    margin: 20px auto;
  }
- 
+
  .profile-img {
    border-radius: 500px;
    height: 30px;
  }
- 

@@ -3,8 +3,8 @@ default: &default
   encoding: unicode
   username: postgres
   password: password
-  host: localhost
-  # host: db
+  # host: localhost
+  host: db
 
 development:
   <<: *default

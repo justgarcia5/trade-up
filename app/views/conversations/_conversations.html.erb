@@ -20,8 +20,6 @@
             </div>
             <div class="chat_ib">
               <h5><%= recipient.name %><span class="chat_date"></span></h5>
-              <% message = Message.where(user_id: recipient.id).last %>
-              <p><%= message.body %></p>
             </div>
           </div>
         <% end %>

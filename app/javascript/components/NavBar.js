@@ -57,11 +57,9 @@ const NavBar = props => {
 
             {currentUser &&
               <React.Fragment>
-                <li className="nav-item dropdown"  >
-                  <a className="nav-link" role="button" type="button" className="btn" data-toggle="dropdown">
-                    <div className="text-white message_icon">
-                      <i className="far fa-comment-dots m-1"></i><i className={displayAlertClass}>{notificationDisplay}</i>
-                    </div>
+                <li className="nav-item dropdown">
+                  <a className="nav-link" role="button" type="button" data-toggle="dropdown">
+                    <i className="far fa-comment-dots text-white message_icon mt-1 mx-1"></i><i className={displayAlertClass}>{notificationDisplay}</i>
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     {notifications.length < 1 &&
@@ -82,9 +80,9 @@ const NavBar = props => {
                     }
                   </div>
                 </li>
-                <li className="nav-item dropdown mr-3">
+                <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src={currentUser.image} className="nav-image mr-2"/>{currentUser.name}
+                    <img src={currentUser.image} className="nav-image mr-2 mb-1"/>{currentUser.name}
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a href="/my-products" className="dropdown-item color-black">Products</a>
