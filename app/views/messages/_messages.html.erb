@@ -10,14 +10,8 @@
       </div>
     <% else %>
       <div class="incoming_msg my-3">
-        <% if user.avatar.attached? %>
-          <div class="incoming_msg_img"> <%= image_tag user.avatar, class: "user-image" %> </div>
-        <% elsif user.image.present? %>
-          <div class="incoming_msg_img"> <%= image_tag user.image, class: "user-image" %> </div>
-        <% else %>
-          <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-        <% end %>
-        <div class="received_msg ">
+        <div class="incoming_msg_img"> <%= image_tag user_avatar(message.user_id), class: "user-image" %> </div>
+        <div class="received_msg">
           <div class="received_withd_msg">
             <p><%= message.body %></p>
             <span class="time_date"><%= message.message_time %></span></div>

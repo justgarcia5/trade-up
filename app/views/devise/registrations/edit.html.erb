@@ -8,6 +8,8 @@
         <%= image_tag @user.avatar, class: "user-avatar-edit" %>
     <% elsif @user.image.present? %>
         <%= image_tag @user.image, class: "user-avatar-edit" %>
+    <% else %>
+        <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" class="user-avatar-edit">
     <% end %>
   </div>
 

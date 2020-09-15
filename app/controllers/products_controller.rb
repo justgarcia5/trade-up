@@ -25,8 +25,7 @@ class ProductsController < ApplicationController
   def edit; end
 
   def show
-    @user_product = User.find(@product.user_id)
-    @user_avatar = @user_product.avatar
+    @user = User.find(@product.user_id)
   end
 
   def update
@@ -44,6 +43,8 @@ class ProductsController < ApplicationController
     redirect_to root_path
     flash[:notice] = 'Product was successfully deleted'
   end
+
+
 
   private
 
