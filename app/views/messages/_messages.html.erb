@@ -1,7 +1,6 @@
 <% @messages.each do |message| %>
   <% if message.body %>
     <% user = User.find(message.user_id) %>
-
     <% if current_user.id == user.id %>
       <div class="outgoing_msg my-3"">
         <div class="sent_msg mr-3">

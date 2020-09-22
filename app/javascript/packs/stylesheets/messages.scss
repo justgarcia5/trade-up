@@ -4,7 +4,7 @@
 }
 
 img {
-  max-width:100%;
+  max-width: 100%;
 }
 
 .inbox_people {
@@ -93,8 +93,9 @@ img {
 }
 
 .chat_people {
-  overflow:hidden;
-  clear:both;
+  overflow: hidden;
+  clear: both;
+  // display: flex;
 }
 
 .chat_list {
@@ -124,7 +125,7 @@ img {
 }
 
 .received_withd_msg p {
-  background: #ebebeb none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-radius: 3px;
   color: rgb(56, 71, 92)#9c9c9c;
   font-size: 14px;

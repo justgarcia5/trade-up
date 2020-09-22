@@ -4,13 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="text-center m-5">
-    <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, class: "user-avatar-edit" %>
-    <% elsif @user.image.present? %>
-        <%= image_tag @user.image, class: "user-avatar-edit" %>
-    <% else %>
-        <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" class="user-avatar-edit">
-    <% end %>
+    <%= image_tag user_avatar(@user.id), class: "user-avatar-edit" %>
   </div>
 
   <div class="field form-group">
