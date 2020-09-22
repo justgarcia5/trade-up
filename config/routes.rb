@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   end
 
   get '/auth/facebook/callback' => 'sessions#create'
-  get '/my-products', to: 'pages#my-products'
   get '/*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
   root to: 'pages#index'
 end

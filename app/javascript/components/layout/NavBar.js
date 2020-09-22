@@ -16,7 +16,6 @@ const NavBar = props => {
             setDisplayAlertClass(alertClass);
           });
     }
-
     fetchData();
   }, []);
 
@@ -85,7 +84,7 @@ const NavBar = props => {
                     <img src={currentUser.image} className="nav-image mr-2 mb-1"/>{currentUser.name}
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a href="/my-products" className="dropdown-item color-black">Products</a>
+                    <a href="/my_products" className="dropdown-item color-black">Products</a>
                     <a href="/users/edit" className="dropdown-item color-black">Profile</a>
                     <div className="dropdown-divider"></div>
                     <a href="/users/sign_out" rel="nofollow" data-method="delete" className="dropdown-item color-black">Sign out</a>

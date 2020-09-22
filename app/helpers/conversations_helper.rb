@@ -4,7 +4,7 @@ module ConversationsHelper
 
   def conversation_last_message(id)
     messages = Message.where(conversation_id: id)
-    messages.last.body
+    messages.last
   end
 
 end

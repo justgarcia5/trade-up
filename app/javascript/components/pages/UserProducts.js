@@ -3,15 +3,19 @@ import EllipsisText from "react-ellipsis-text";
 
 export default function userProducts(props) {
   const [products, setProducts] = useState([]);
-  const [currentUser, setCurrentUser] = useState(props.current_user)
+  const [currentUser, setCurrentUser] = useState(props.currentUser)
 
   useEffect(() => {
-    fetch(`/products.json`)
-      .then(response => response.json())
-      .then(products => {
-        let filteredProducts = products.filter(product => product.user_id == currentUser.id)
-        setProducts(filteredProducts);
-      });
+    async function fetchData() {
+      const res = await fetch(`/products.json`);
+      res
+        .json()
+        .then(products => {
+          let filteredProducts = products.filter(product => product.user_id == currentUser.id)
+          setProducts(filteredProducts);
+        });
+    }
+    fetchData();
   }, []);
 
   return(

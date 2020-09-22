@@ -1,5 +1,6 @@
 <% @conversations.each do |conversation| %>
   <% if conversation.sender_id == current_user.id or conversation.recipient_id == current_user.id %>
+
     <% if conversation.sender_id == current_user.id %>
       <% recipient = User.find(conversation.recipient_id) %>
     <% else %>
@@ -14,8 +15,8 @@
               <%= image_tag user_avatar(recipient.id), class: "convo-user-image" %><br>
             </div>
             <div class="chat_ib">
-              <h5><%= recipient.name %><span class="chat_date"></span></h5>
-              <%= truncate(conversation_last_message(conversation.id), length: 40) %>
+              <h5><%= recipient.name %><span class="chat_date"><%= conversation_last_message(conversation.id).message_time %><br></span></h5>
+              <%= truncate(conversation_last_message(conversation.id).body, length: 40) %>
             </div>
           </div>
           <br>

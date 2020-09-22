@@ -5,11 +5,13 @@ export default function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`/products.json`)
-      .then(response => response.json())
-      .then(products => {
-        setProducts(products);
-      });
+    async function fetchData() {
+      const res = await fetch(`/products.json`);
+      res
+        .json()
+        .then(products => setProducts(products));
+    }
+    fetchData();
   }, []);
 
   return(

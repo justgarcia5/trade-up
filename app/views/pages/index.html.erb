@@ -1,1 +1,6 @@
-<%= react_component "products" %>
+<%= react_component "pages/Landing", current_user: {
+    id: current_user.id,
+    email: current_user.email,
+    name: current_user.name,
+    image: @image
+  } %>
