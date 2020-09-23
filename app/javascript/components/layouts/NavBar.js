@@ -29,6 +29,7 @@ const NavBar = props => {
   }
 
   const notificationDisplay = notifications.length > 0 ? notifications.length : " ";
+
   return(
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
