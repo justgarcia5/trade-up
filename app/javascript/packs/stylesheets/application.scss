@@ -10,6 +10,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@500&display=swap');
 
+@import "~bootstrap-4.0.0/scss/_functions.scss";
+@import "~bootstrap-4.0.0/scss/_variables.scss";
+@import "~bootstrap-4.0.0/scss/mixins/_breakpoints.scss";
+
 .user-avatar-edit {
   height: 100px;
 }
